@@ -142,7 +142,7 @@ func TestValidateClusterRoleBinding(t *testing.T) {
 func TestValidateRoleBinding(t *testing.T) {
 	errs := ValidateRoleBinding(
 		&rbac.RoleBinding{
-			ObjectMeta: metav1.ObjectMeta{Namespace: metav1.NamespaceDefault, Name: "master"},
+			ObjectMeta: metav1.ObjectMeta{Namespace: metav1.NamespaceDefault, Name: "test-relase:master"},
 			RoleRef:    rbac.RoleRef{APIGroup: rbac.GroupName, Kind: "Role", Name: "valid"},
 			Subjects: []rbac.Subject{
 				{Name: "validsaname", APIGroup: "", Kind: rbac.ServiceAccountKind},
@@ -389,7 +389,7 @@ func TestValidateRoleValidRoleNoNamespace(t *testing.T) {
 	ValidateClusterRoleTest{
 		role: rbac.ClusterRole{
 			ObjectMeta: metav1.ObjectMeta{
-				Name: "default",
+				Name: "test-release:default",
 			},
 		},
 		wantErr: false,
